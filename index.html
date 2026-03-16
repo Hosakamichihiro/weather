@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>天気情報アプリ</title>
+    <link rel="icon" type="image/png" href="assets/images/weather_icons.png">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>   
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <input type="checkbox" id="menu-toggle" hidden>
+    <header class="site-header">
+        <a href="index.html" class="logo-link">
+            <img src="assets/images/weather_icons_3_200.png" class="logo">
+            <h1 class="site-title">天気情報アプリ</h1>
+        </a>
+
+        <div class="menu-wrapper">
+            <label class="menu-icon" for="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+        </div>
+    </header>
+
+    <nav class="side-menu" id="sideMenu">
+        <p>ようこそ</p>
+    </nav>
+
+    <label for="menu-toggle" class="overlay"></label>
+
+    <h2>天気を検索</h2>
+
+    <form class="form-area">
+        <div class="input-group">
+            <label>市区町村名を入力：</label>
+            <input type="text" name="city_name" id="city-input" autocomplete="off" list="suggestions">
+
+            <div id="suggestions-box"></div>
+        </div>
+
+        <div class="map-style-group">
+            <label>地図スタイル：</label>
+            <select name="map_style" class="custom-select">
+                <option value="OpenStreetMap">標準</option>
+                <option value="Stamen Terrain">地形</option>
+                <option value="Stamen Toner">白黒</option>
+                <option value="Stamen Watercolor">水彩画</option>
+                <option value="CartoDB positron">ポジトロン</option>
+                <option value="CartoDB dark_matter">ダークマター</option>
+            </select>
+        </div>
+        <button type="submit">表示</button>
+    </form>
+
+    <h2 id="weather-title"></h2>
+    <div id="weather-area" style="display:none">
+        <div class="weather-wrapper">
+
+            <!-- 左 -->
+            <div class="forecast-area"></div>
+
+            <!-- 右 -->
+            <div class="summary-area">
+                <h3>地図</h3>
+                <div id="map"></div>
+
+                <div id="overview"></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
