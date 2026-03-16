@@ -1,0 +1,379 @@
+body {
+    background: url("https://www.transparenttextures.com/patterns/paper-fibers.png"); /* 和紙風の背景 */
+    background-color: #fdfaf4; /* 和風なアイボリー */
+    font-family: "Noto Serif JP", serif;
+    color: #3e3e3e;
+    padding: 20px;
+    padding-top: 90px;
+}
+
+
+header {
+
+    padding: 1em 0;
+}
+
+.season-label {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 0.3em;
+}
+
+h1 {
+    color: #fffef8;
+    font-family: "Kaisei Decol", serif;
+    font-size: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+h2{
+    color: #2c3e50;
+    font-family: "Noto Serif JP", serif;
+    font-size: 32px;
+}
+
+h3{
+    color: #2c3e50;
+    font-family: "Noto Serif JP", serif;
+    font-size: 28px;
+}
+
+p{
+    color: #2c3e50;
+    font-family: "Noto Serif JP", serif;
+    font-size: 20px;
+}
+
+li{
+    color: #2c3e50;
+    font-family: "Noto Serif JP", serif;
+    font-size: 20px;
+    padding-top:20px; 
+    padding-bottom:20px;
+}
+
+form {
+    border: 1px solid #dcd6d0;
+    margin-bottom: 30px;
+    background-color: #fffef8;
+    padding: 15px 20px;
+    border: 0px solid #c3a87c;
+    border-radius: 10px;
+    max-width: 500px;
+}
+
+input[type="text"] {
+    padding: 10px;
+    border: 1px solid #a67c52;
+    border-radius: 6px;
+    font-size: 16px;
+    width: 70%;
+    font-family: "Noto Serif JP", serif;
+    background-color: #fffaf0;
+    margin-top: 3px
+}
+
+input[type="password"] {
+    padding: 10px;
+    border: 1px solid #a67c52;
+    border-radius: 6px;
+    font-size: 16px;
+    width: 70%;
+    font-family: "Noto Serif JP", serif;
+    background-color: #fffaf0;
+    margin-top: 3px
+}
+
+button {
+    padding: 10px 16px;
+    background: linear-gradient(to bottom, #c3a87c, #a67c52);
+    color: #fffef8;
+    font-family: "Noto Serif JP", "游明朝", serif;
+    border: 2px solid #8c6239;
+    border-radius: 8px;
+    
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 0px;
+    text-align: center
+}
+
+button:hover {
+    background: linear-gradient(to bottom, #a67c52, #8c6239);
+    transform: translateY(-1px);
+}
+
+div {
+    background-color: #fffef8;
+    border: 1px solid #dcd6d0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.form-area {
+    margin-bottom: 0px;
+    border: 1px solid #dcd6d0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.weather-area {
+    display: flex;
+    gap: 30px;
+}
+
+.weather-wrapper{
+    display:flex;
+    gap:30px;
+}
+
+.forecast-area{
+    flex: 2;
+    padding-bottom: 0px;
+}
+
+.summary-area {
+    flex: 1;
+    border-left: 1px solid #dcd6d0;
+    padding-left: 20px;
+}
+
+#map{
+    width:100%;
+    height:450px;
+    border-radius:10px;
+    margin-bottom:20px;
+}
+
+#overview{
+    border-left: 1px solid #dcd6d0;
+    padding-left: 20px;
+}
+
+.forecast-card {
+    border-bottom: 1px solid #dcd6d0;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+
+select{
+    padding: 10px;
+    border: 1px solid #a67c52;
+    border-radius: 6px;
+    font-size: 14px;
+    width: 125px;
+    font-family: "Noto Serif JP", serif;
+    background-color: #fffaf0;
+    padding: 8px;
+    appearance: none;
+    position: relative;
+    border-bottom: 2px solid #2c3e50;
+    
+}
+
+.input-group,
+.map-style-group {
+    display: flex;
+    flex-direction: column;
+}
+
+select option:checked {
+    background-color: #fffaf0; 
+    color: #2c3e50;               
+}
+
+.custom-select {
+    background-color: #fffaf0;
+    
+}
+
+.select::after {
+    position: absolute;
+    content: '';
+    width: 8px;
+    height: 8px;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+    border-bottom: 2px solid #fffaf0;
+    border-right: 2px solid #fffaf0;
+    z-index: -1;
+}
+
+.section input[type="password"]{
+    padding: 10px;
+    border: 1px solid #a67c52;
+    border-radius: 6px;
+    font-size: 16px;
+    width: 70%;
+    font-family: "Noto Serif JP", serif;
+    background-color: #fffaf0;
+    margin-top: 3px
+
+}
+
+.delete-btn{
+    outline: none;
+    box-shadow: none;
+}
+
+
+
+.delete-icon {
+    width: 32px;
+    height: 32px;
+    vertical-align: middle;
+}
+
+
+.logo-link{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    text-decoration: none;
+    color: inherit;
+    margin-right:auto;
+}
+
+.logo{
+    height: 50px;
+}
+
+.site-title{
+    font-size: 42px;
+    font-weight: bold;
+}
+
+
+.site-header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 80.67px;
+    width: 100%;
+    background: url("https://www.transparenttextures.com/patterns/paper-fibers.png");
+    background-color: #2c3e50;
+    padding: 0px 40px;
+    z-index: 1100;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+
+
+.menu-wrapper{
+    
+    font-size:28px;
+    background:url("https://www.transparenttextures.com/patterns/paper-fibers.png");
+    background-color: #2c3e50;
+    border:none;
+    cursor:pointer;
+    margin-right: 50px;
+    border-radius:10px;
+    transition:all 0.2s;
+    padding: 10px;
+    
+    position:relative;
+}
+
+.menu-wrapper:hover{
+    background:url("https://www.transparenttextures.com/patterns/paper-fibers.png");
+    background-color: #1c2833;
+    transform: translateY(0px); 
+}
+
+.menu-icon{
+    width:40px;
+    height:25px;
+    cursor:pointer;
+    z-index:1100;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+}
+
+.menu-icon span{
+    display:block;
+    height:3px;
+    background:#fffef8;
+    border-radius:2px;
+    transition:0.35s;
+}
+
+#menu-toggle:checked + header .menu-wrapper .menu-icon span:nth-child(1){
+    transform:translateY(11px) rotate(45deg);
+}
+
+#menu-toggle:checked + header .menu-wrapper .menu-icon span:nth-child(2){
+    opacity:0;
+}
+
+#menu-toggle:checked + header .menu-wrapper .menu-icon span:nth-child(3){
+    transform:translateY(-11px) rotate(-45deg);
+}
+
+.side-menu{
+    position:fixed;
+    top:0;
+    right:-250px;
+    width:250px;
+    height:100%;
+    background:#2c3e50;
+    padding-top:100px;
+    display:flex;
+    flex-direction:column;
+    transition:0.3s;
+    z-index: 1050;
+
+    transition: right 0.3s ease, opacity 0.3s ease;
+    opacity:0;
+}
+
+/* 開いた状態 */
+#menu-toggle:checked ~ .side-menu{
+    right:0;
+    opacity:1;
+}
+
+
+/* メニューリンク */
+
+.side-menu a{
+    text-decoration:none;
+    padding:15px 30px;
+    font-size:18px;
+    color:#fffef8;
+}
+
+.side-menu a:hover{
+    background:url("https://www.transparenttextures.com/patterns/paper-fibers.png");
+    background-color:#fffef8 ;
+    color:#2c3e50
+}
+
+.side-menu p{
+    padding: 15px 30px;
+    color:#fffef8;
+    border-bottom:3px solid rgba(255,254,248,1.0);
+    margin-bottom:10px;
+}
+
+.overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.3);
+    opacity:0;
+    pointer-events:none;
+    transition:0.3s;
+    z-index: 1000;
+}
+
+#menu-toggle:checked ~ .overlay{
+    opacity:1;
+    pointer-events:auto;
+}
