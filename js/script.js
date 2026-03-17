@@ -40,18 +40,21 @@ function searchWeather(){
     const cityName =
         document.querySelector("input[name='city_name']").value.trim();
 
-    const cityCode = cities[cityName];
+    const cityData = cities[cityName]; // ← これを追加
 
-    if(!cityCode){
+    console.log(cityData);
 
+    if(!cityData){
         alert("都市が見つかりません");
-
         return;
-
     }
 
-    getWeather(cityCode);
+    saveHistory(cityName);
 
+    getWeather(cityData.code);
+
+    // 地図はここで呼んでOK
+    showMap(cityData.lat, cityData.lon);
 }
 
 // ---------------------------
@@ -122,10 +125,6 @@ function displayWeather(weather) {
         `<h3>天気概要</h3>
         <p>${weather.description.text}</p>`;
   
-    showMap(
-        weather.location.lat,
-        weather.location.lon
-    );
 }
 
 
@@ -164,21 +163,49 @@ document.addEventListener("click", function(e){
 });
 
 
-
+//----------
 //地図を表示
-let map;
+//----------
+let leafletMap;
 
-function showMap(lat, lon) {
-    if (!map) {
-        map = L.map("map").setView([lat, lon], 10);
+function showMap(lat, lon){
 
-        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        attribution: "© OpenStreetMap"
-        }).addTo(map);
+    const weatherArea = document.getElementById("weather-area");
+    weatherArea.style.display = "block";
 
-    } else {
-        map.setView([lat, lon], 10);
+    if(!leafletMap){
+
+        leafletMap = L.map("map-area").setView([lat, lon], 10);
+
+        L.tileLayer(
+            "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+            { attribution:"© OpenStreetMap" }
+        ).addTo(leafletMap);
+
+    }else{
+        leafletMap.setView([lat, lon], 10);
     }
 
-    L.marker([lat, lon]).addTo(map);
+    L.marker([lat, lon]).addTo(leafletMap);
+
+    setTimeout(() => {
+        leafletMap.invalidateSize();
+    }, 100);
 }
+
+
+//------------
+//検索履歴(保存)
+//------------
+function saveHistory(cityName){
+
+    let history = JSON.parse(localStorage.getItem("history")) || [];
+
+    // 重複削除
+    history = history.filter(item => item !== cityName);
+
+    history.unshift(cityName);
+
+    localStorage.setItem("history", JSON.stringify(history));
+}
+
