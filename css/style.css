@@ -138,19 +138,23 @@ div {
 .summary-area {
     flex: 1;
     border-left: 1px solid #dcd6d0;
-    padding-left: 20px;
+    padding-left: 10px;
 }
 
-#map{
+#map-area{
+    height:300px;
     width:100%;
-    height:450px;
     border-radius:10px;
     margin-bottom:20px;
 }
 
 #overview{
     border-left: 1px solid #dcd6d0;
-    padding-left: 20px;
+    padding-left: 10px;
+}
+
+#overview div{
+    border: 0px solid #dcd6d0;
 }
 
 .forecast-card {
@@ -215,9 +219,28 @@ select option:checked {
 
 }
 
+
+.auth-link {
+    color: #007b43;  
+}
+
+.auth-link:hover {
+    color: #316745;
+    text-decoration: underline;
+}
+
 .delete-btn{
+    margin-left: auto;
+    background: none;
+    border: none;
+    cursor: pointer;
     outline: none;
     box-shadow: none;
+}
+
+.delete-btn :hover {
+    background: linear-gradient(to bottom, #a67c52, #8c6239);
+    transform: translateY(0px);
 }
 
 
