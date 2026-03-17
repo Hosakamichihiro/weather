@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>天気情報アプリ</title>
+    <link rel="icon" type="image/png" href="assets/images/weather_icons.png">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>   
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <input type="checkbox" id="menu-toggle" hidden>
+    <header class="site-header">
+        <a href="index.html" class="logo-link">
+            <img src="assets/images/weather_icons_3_200.png" class="logo">
+            <h1 class="site-title">天気情報アプリ</h1>
+        </a>
+
+        <div class="menu-wrapper">
+            <label class="menu-icon" for="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+        </div>
+    </header>
+
+    <nav class="side-menu" id="sideMenu">
+        <p>ようこそ</p>
+        <a href="index.html">ホーム</a>
+        <a href="history.html">検索履歴</a>
+    </nav>
+
+    <label for="menu-toggle" class="overlay"></label>
+
+    <h2>検索履歴</h2>
+    <div>
+        <ul id="history-list"></ul>
+    </div>
+
+
+    <button onclick="clearHistory()">すべて削除</button>
+
+    <script src="js/history.js"></script>
+</body>
+</html>
