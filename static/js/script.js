@@ -175,7 +175,7 @@ function showMap(lat, lon){
 
     if(!leafletMap){
 
-        leafletMap = L.map("map-area").setView([lat, lon], 10);
+        leafletMap = L.map("map-area").setView([lat, lon], 8);
 
         L.tileLayer(
             "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
@@ -198,14 +198,26 @@ function showMap(lat, lon){
 //検索履歴(保存)
 //------------
 function saveHistory(cityName){
-
-    let history = JSON.parse(localStorage.getItem("history")) || [];
-
-    // 重複削除
-    history = history.filter(item => item !== cityName);
-
-    history.unshift(cityName);
-
-    localStorage.setItem("history", JSON.stringify(history));
+    fetch("/api/save_history", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({ city: cityName })
+    });
 }
 
+
+//------------
+//お気に入り地点(保存)
+//------------
+const favBtn = document.createElement("button");
+favBtn.textContent = "お気に入り";
+
+favBtn.onclick = () => {
+    fetch("/api/add_favorite", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({ city: cityName })
+    });
+};
+
+card.appendChild(favBtn);
