@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>天気情報アプリ</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/weather_icons.png') }}">
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>   
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <input type="checkbox" id="menu-toggle" hidden>
+    <header class="site-header">
+        <a href="{{ url_for('index') }}" class="logo-link">
+            <img src="{{ url_for('static', filename='images/weather_icons_3_200.png') }}" class="logo">
+            <h1 class="site-title">天気情報アプリ</h1>
+        </a>
+
+        <div class="menu-wrapper">
+            <label class="menu-icon" for="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+        </div>
+    </header>
+
+    <nav class="side-menu" id="sideMenu">
+        <p>ようこそ</p>
+        <a href="{{ url_for('index') }}">ホーム</a>
+        <a href="{{ url_for('history_page') }}">検索履歴</a>
+        <a href="{{ url_for('favorites_page') }}">お気に入り地点</a>
+    </nav>
+
+    <label for="menu-toggle" class="overlay"></label>
+
+
+    <h2>ユーザー登録</h2>
+    <form method="POST">
+        <div class="form-group">
+            <label for="username">ユーザー名：</label>
+            <input type="text" name="username" placeholder="ユーザー名を入力" required>
+        </div>
+        <div class="form-group">
+            <label for="password">パスワード：</label>
+            <input type="password" name="password" id="password" placeholder="パスワードを入力(8文字以上を推奨)" required minlength="8">
+            <label>
+                <input type="checkbox" id="togglePassword"> 表示
+            </label>
+        </div>
+        <button type="submit">登録</button>
+    </form>
+    <p>アカウントをお持ちの方は <a href="{{ url_for('login') }}" class="auth-link">ログイン</a></p>
+
+    <p><a href="{{ url_for('index') }}" class="auth-link">ホーム</a></p>
+</body>
+</html>
