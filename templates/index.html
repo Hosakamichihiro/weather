@@ -28,61 +28,100 @@
     </header>
 
     <nav class="side-menu" id="sideMenu">
-        <p>ようこそ {{ user }} さん</p>
+        {% if user %}
+            <p>ようこそ {{ user }} さん</p>
+        {% else %}
+            <p>ようこそ</p>
+        {% endif %}
+
         <a href="{{ url_for('index') }}">ホーム</a>
         <a href="{{ url_for('history_page') }}">検索履歴</a>
         <a href="{{ url_for('favorites_page') }}">お気に入り地点</a>
-        <a href="{{ url_for('logout') }}">ログアウト</a>
+
+        {% if user %}
+            <a href="{{ url_for('logout') }}">ログアウト</a>
+        {% else %}
+            <a href="{{ url_for('login') }}">ログイン</a>
+        {% endif %}
     </nav>
 
     <label for="menu-toggle" class="overlay"></label>
+    <main class="main">
+        <h2>天気を検索</h2>
+        <p class="link-of-pages"><a href="{{ url_for('history_page') }}" class="auth-link">検索履歴</a></p>
+        <p class="link-of-pages"><a href="{{ url_for('favorites_page') }}" class="auth-link">お気に入り地点</a></p>
 
-    <h2>天気を検索</h2>
-    <p><a href="{{ url_for('history_page') }}" class="auth-link">検索履歴</a></p>
-    <p><a href="{{ url_for('favorites_page') }}" class="auth-link">お気に入り地点</a></p>
+        <form class="form-area">
+            <div class="input-group">
+                <label>市区町村名を入力：</label>
+                <input type="text" name="city_name" id="city-input" autocomplete="off" list="suggestions">
 
-    <form class="form-area">
-        <div class="input-group">
-            <label>市区町村名を入力：</label>
-            <input type="text" name="city_name" id="city-input" autocomplete="off" list="suggestions">
+                <div id="suggestions-box"></div>
+            </div>
 
-            <div id="suggestions-box"></div>
-        </div>
+            <div class="map-style-group">
+                <label>地図スタイル：</label>
+                <select name="map_style" class="custom-select">
+                    <option value="OpenStreetMap">標準</option>
+                    <option value="Stamen Terrain">地形</option>
+                    <option value="Stamen Toner">白黒</option>
+                    <option value="Stamen Watercolor">水彩画</option>
+                    <option value="CartoDB positron">ポジトロン</option>
+                    <option value="CartoDB dark_matter">ダークマター</option>
+                </select>
+            </div>
+            <button type="submit">表示</button>
+        </form>
 
-        <div class="map-style-group">
-            <label>地図スタイル：</label>
-            <select name="map_style" class="custom-select">
-                <option value="OpenStreetMap">標準</option>
-                <option value="Stamen Terrain">地形</option>
-                <option value="Stamen Toner">白黒</option>
-                <option value="Stamen Watercolor">水彩画</option>
-                <option value="CartoDB positron">ポジトロン</option>
-                <option value="CartoDB dark_matter">ダークマター</option>
-            </select>
-        </div>
-        <button type="submit">表示</button>
-    </form>
+        <h2 id="weather-title"></h2>
+        <div id="weather-area" style="display:none">
+            <div class="weather-wrapper">
 
-    <h2 id="weather-title"></h2>
-    <div id="weather-area" style="display:none">
-        <div class="weather-wrapper">
+                <!-- 左 -->
+                <div class="forecast-area"></div>
 
-            <!-- 左 -->
-            <div class="forecast-area"></div>
+                <!-- 右 -->
+                <div class="summary-area">
+                    <h3>地図</h3>
+                    <div id="map-area"></div>
 
-            <!-- 右 -->
-            <div class="summary-area">
-                <h3>地図</h3>
-                <div id="map-area"></div>
+                    <div id="overview"></div>
 
-                <div id="overview"></div>
+                </div>
 
             </div>
 
         </div>
-
-    </div>
-
+    </main>
+    <footer>
+        <div class="footer-upper">
+            <div class="footer-upper-logo">
+                <a href="{{ url_for('index') }}" class="footer-logo-link">
+                    <img src="{{ url_for('static', filename='images/weather_icons_3_200.png') }}" class="footer-logo">
+                    <h1 class="footer-title">天気情報アプリ</h1>
+                </a>
+            </div>
+            <div class="footer-upper-nav">
+                <div class="footer-upper-nav-clm">
+                    <p class="link-of-pages"><a href="{{ url_for('history_page') }}">検索履歴</a></p>
+                </div>
+                <div class="footer-upper-nav-clm">
+                    <p class="link-of-pages"><a href="{{ url_for('favorites_page') }}">お気に入り地点</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-lower">
+            <div class="footer-container">
+                <p class="copyright">
+                    <small>
+                        Copyright©2026 M.H.
+                        <br>
+                        All Rights Reserved.
+                    </small>
+                </p>
+            </div>
+        </div>
+    </footer>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>
