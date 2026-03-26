@@ -213,24 +213,23 @@ def delete_favorite(id):
 # トップ
 # -----------------
 @app.route("/")
-@login_required
 def index():
     init()
-    return render_template("index.html")
+    return render_template("index.html", user=session.get("user"))
 
 @app.route("/login")
 def login_page():
-    return render_template("login.html")
+    return render_template("login.html", user=session.get("user"))
 
 @app.route("/history")
 @login_required
 def history_page():
-    return render_template("history.html")
+    return render_template("history.html", user=session.get("user"))
 
 @app.route("/favorites")
 @login_required
 def favorites_page():
-    return render_template("favorites.html")
+    return render_template("favorites.html", user=session.get("user"))
 
 if __name__ == "__main__":
     app.run(debug=True)
