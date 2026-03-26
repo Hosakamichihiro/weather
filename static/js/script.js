@@ -1,3 +1,28 @@
+//------------
+//ヘッダー
+//------------
+let lastScrollY = window.scrollY;
+const header = document.querySelector(".site-header");
+
+window.addEventListener("scroll", () => {
+    const currentScrollY = window.scrollY;
+
+    if (currentScrollY < 50) {
+        header.classList.remove("hide");
+        return;
+    }
+
+    if (currentScrollY > lastScrollY) {
+        header.classList.add("hide");
+    } else {
+        header.classList.remove("hide");
+    }
+
+    lastScrollY = currentScrollY;
+});
+
+
+
 // ---------------------------
 // 都市データ
 // ---------------------------
